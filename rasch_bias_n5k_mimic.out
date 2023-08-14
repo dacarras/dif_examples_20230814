@@ -1,0 +1,1284 @@
+Mplus VERSION 8.10 (Mac)
+MUTHEN & MUTHEN
+08/13/2023   6:55 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+  rasch mimic;
+
+  DATA:
+  FILE = rasch_bias_n5000.dat;
+
+  VARIABLE:
+  NAMES =
+  i01
+  i02
+  i03
+  i04
+  i05
+  i06
+  i07
+  i08
+  i09
+  i10
+  i11
+  i12
+  i13
+  u
+  ;
+
+  MISSING=.;
+
+  CATEGORICAL  =
+  i01
+  i02
+  i03
+  i04
+  i05
+  i06
+  i07
+  i08
+  i09
+  i10
+  i11
+  i12
+  i13
+  ;
+
+  ANALYSIS:
+  TYPE = GENERAL;
+  ESTIMATOR = MLR;
+
+  MODEL:
+
+  !measurement model
+  theta by i01@1;
+  theta by i02@1;
+  theta by i03@1;
+  theta by i04@1;
+  theta by i05@1;
+  theta by i06@1;
+  theta by i07@1;
+  theta by i08@1;
+  theta by i09@1;
+  theta by i10@1;
+  theta by i11@1;
+  theta by i12@1;
+  theta by i13@1;
+
+  !means
+  [theta@0];
+
+  !latent regression
+  theta on u;
+
+  !effect on thresholds
+  i10 on u (bias);
+  i11 on u (bias);
+  i12 on u (bias);
+  i13 on u (bias);
+
+  OUTPUT:
+  STANDARDIZED
+  CINTERVAL
+  RESIDUAL
+  TECH10;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+rasch mimic;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        5000
+
+Number of dependent variables                                   13
+Number of independent variables                                  1
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   I01         I02         I03         I04         I05         I06
+   I07         I08         I09         I10         I11         I12
+   I13
+
+Observed independent variables
+   U
+
+Continuous latent variables
+   THETA
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                    STANDARD
+  Number of integration points                                  15
+  Dimensions of numerical integration                            1
+  Adaptive quadrature                                           ON
+Link                                                         LOGIT
+Cholesky                                                        ON
+
+Input data file(s)
+  rasch_bias_n5000.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+     Number of y missing data patterns           0
+     Number of u missing data patterns           1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    I01
+      Category 1    0.183          913.000
+      Category 2    0.817         4087.000
+    I02
+      Category 1    0.212         1060.000
+      Category 2    0.788         3940.000
+    I03
+      Category 1    0.259         1296.000
+      Category 2    0.741         3704.000
+    I04
+      Category 1    0.302         1512.000
+      Category 2    0.698         3488.000
+    I05
+      Category 1    0.319         1597.000
+      Category 2    0.681         3403.000
+    I06
+      Category 1    0.394         1971.000
+      Category 2    0.606         3029.000
+    I07
+      Category 1    0.467         2337.000
+      Category 2    0.533         2663.000
+    I08
+      Category 1    0.492         2461.000
+      Category 2    0.508         2539.000
+    I09
+      Category 1    0.586         2929.000
+      Category 2    0.414         2071.000
+    I10
+      Category 1    0.642         3212.000
+      Category 2    0.358         1788.000
+    I11
+      Category 1    0.750         3749.000
+      Category 2    0.250         1251.000
+    I12
+      Category 1    0.764         3821.000
+      Category 2    0.236         1179.000
+    I13
+      Category 1    0.781         3903.000
+      Category 2    0.219         1097.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     U                     0.158       1.877       0.000   84.22%       0.000      0.000      0.000
+            5000.000       0.133       1.525       1.000   15.78%       0.000      0.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       16
+
+Loglikelihood
+
+          H0 Value                      -33732.776
+          H0 Scaling Correction Factor      1.0022
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   67497.553
+          Bayesian (BIC)                 67601.828
+          Sample-Size Adjusted BIC       67550.985
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ THETA    BY
+    I01                1.000      0.000    999.000    999.000
+    I02                1.000      0.000    999.000    999.000
+    I03                1.000      0.000    999.000    999.000
+    I04                1.000      0.000    999.000    999.000
+    I05                1.000      0.000    999.000    999.000
+    I06                1.000      0.000    999.000    999.000
+    I07                1.000      0.000    999.000    999.000
+    I08                1.000      0.000    999.000    999.000
+    I09                1.000      0.000    999.000    999.000
+    I10                1.000      0.000    999.000    999.000
+    I11                1.000      0.000    999.000    999.000
+    I12                1.000      0.000    999.000    999.000
+    I13                1.000      0.000    999.000    999.000
+
+ THETA      ON
+    U                  0.052      0.063      0.813      0.416
+
+ I10        ON
+    U                  2.489      0.060     41.314      0.000
+
+ I11        ON
+    U                  2.489      0.060     41.314      0.000
+
+ I12        ON
+    U                  2.489      0.060     41.314      0.000
+
+ I13        ON
+    U                  2.489      0.060     41.314      0.000
+
+ Intercepts
+    THETA              0.000      0.000    999.000    999.000
+
+ Thresholds
+    I01$1             -1.996      0.048    -41.622      0.000
+    I02$1             -1.757      0.046    -38.418      0.000
+    I03$1             -1.414      0.044    -32.326      0.000
+    I04$1             -1.130      0.043    -26.508      0.000
+    I05$1             -1.023      0.042    -24.219      0.000
+    I06$1             -0.582      0.041    -14.331      0.000
+    I07$1             -0.173      0.040     -4.309      0.000
+    I08$1             -0.037      0.040     -0.914      0.361
+    I09$1              0.481      0.040     11.905      0.000
+    I10$1              1.225      0.043     28.355      0.000
+    I11$1              1.987      0.047     41.976      0.000
+    I12$1              2.103      0.048     43.706      0.000
+    I13$1              2.240      0.049     45.262      0.000
+
+ Residual Variances
+    THETA              1.972      0.060     33.072      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.412E-01
+       (ratio of smallest to largest eigenvalue)
+
+
+RESULTS IN PROBABILITY SCALE
+
+                    Estimate
+
+ I01
+    Category 1         0.183
+    Category 2         0.817
+ I02
+    Category 1         0.212
+    Category 2         0.788
+ I03
+    Category 1         0.259
+    Category 2         0.741
+ I04
+    Category 1         0.302
+    Category 2         0.698
+ I05
+    Category 1         0.319
+    Category 2         0.681
+ I06
+    Category 1         0.394
+    Category 2         0.606
+ I07
+    Category 1         0.467
+    Category 2         0.533
+ I08
+    Category 1         0.492
+    Category 2         0.508
+ I09
+    Category 1         0.585
+    Category 2         0.415
+ I10
+    Category 1         0.642
+    Category 2         0.358
+ I11
+    Category 1         0.750
+    Category 2         0.250
+ I12
+    Category 1         0.764
+    Category 2         0.236
+ I13
+    Category 1         0.781
+    Category 2         0.219
+
+
+LOGISTIC REGRESSION ODDS RATIO RESULTS
+
+                                                95% C.I.
+                    Estimate       S.E.  Lower 2.5% Upper 2.5%
+
+ I10        ON
+    U                 12.048      0.726     10.706     13.558
+
+ I11        ON
+    U                 12.048      0.726     10.706     13.558
+
+ I12        ON
+    U                 12.048      0.726     10.706     13.558
+
+ I13        ON
+    U                 12.048      0.726     10.706     13.558
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ THETA    BY
+    I01                0.612      0.006    105.784      0.000
+    I02                0.612      0.006    105.784      0.000
+    I03                0.612      0.006    105.784      0.000
+    I04                0.612      0.006    105.784      0.000
+    I05                0.612      0.006    105.784      0.000
+    I06                0.612      0.006    105.784      0.000
+    I07                0.612      0.006    105.784      0.000
+    I08                0.612      0.006    105.784      0.000
+    I09                0.612      0.006    105.784      0.000
+    I10                0.568      0.006     94.473      0.000
+    I11                0.568      0.006     94.473      0.000
+    I12                0.568      0.006     94.473      0.000
+    I13                0.568      0.006     94.473      0.000
+
+ THETA      ON
+    U                  0.013      0.016      0.813      0.416
+
+ I10        ON
+    U                  0.367      0.009     42.284      0.000
+
+ I11        ON
+    U                  0.367      0.009     42.284      0.000
+
+ I12        ON
+    U                  0.367      0.009     42.284      0.000
+
+ I13        ON
+    U                  0.367      0.009     42.284      0.000
+
+ Intercepts
+    THETA              0.000      0.000    999.000    999.000
+
+ Thresholds
+    I01$1             -0.870      0.021    -41.897      0.000
+    I02$1             -0.766      0.020    -38.439      0.000
+    I03$1             -0.616      0.019    -32.441      0.000
+    I04$1             -0.492      0.019    -26.586      0.000
+    I05$1             -0.446      0.018    -24.292      0.000
+    I06$1             -0.254      0.018    -14.360      0.000
+    I07$1             -0.075      0.017     -4.310      0.000
+    I08$1             -0.016      0.018     -0.914      0.361
+    I09$1              0.210      0.018     11.897      0.000
+    I10$1              0.495      0.017     29.111      0.000
+    I11$1              0.803      0.018     43.794      0.000
+    I12$1              0.850      0.019     45.436      0.000
+    I13$1              0.905      0.019     47.283      0.000
+
+ Residual Variances
+    THETA              1.000      0.000   2269.819      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ THETA    BY
+    I01                0.612      0.006    105.784      0.000
+    I02                0.612      0.006    105.784      0.000
+    I03                0.612      0.006    105.784      0.000
+    I04                0.612      0.006    105.784      0.000
+    I05                0.612      0.006    105.784      0.000
+    I06                0.612      0.006    105.784      0.000
+    I07                0.612      0.006    105.784      0.000
+    I08                0.612      0.006    105.784      0.000
+    I09                0.612      0.006    105.784      0.000
+    I10                0.568      0.006     94.473      0.000
+    I11                0.568      0.006     94.473      0.000
+    I12                0.568      0.006     94.473      0.000
+    I13                0.568      0.006     94.473      0.000
+
+ THETA      ON
+    U                  0.037      0.045      0.813      0.416
+
+ I10        ON
+    U                  1.006      0.022     45.299      0.000
+
+ I11        ON
+    U                  1.006      0.022     45.299      0.000
+
+ I12        ON
+    U                  1.006      0.022     45.299      0.000
+
+ I13        ON
+    U                  1.006      0.022     45.299      0.000
+
+ Intercepts
+    THETA              0.000      0.000    999.000    999.000
+
+ Thresholds
+    I01$1             -0.870      0.021    -41.897      0.000
+    I02$1             -0.766      0.020    -38.439      0.000
+    I03$1             -0.616      0.019    -32.441      0.000
+    I04$1             -0.492      0.019    -26.586      0.000
+    I05$1             -0.446      0.018    -24.292      0.000
+    I06$1             -0.254      0.018    -14.360      0.000
+    I07$1             -0.075      0.017     -4.310      0.000
+    I08$1             -0.016      0.018     -0.914      0.361
+    I09$1              0.210      0.018     11.897      0.000
+    I10$1              0.495      0.017     29.111      0.000
+    I11$1              0.803      0.018     43.794      0.000
+    I12$1              0.850      0.019     45.436      0.000
+    I13$1              0.905      0.019     47.283      0.000
+
+ Residual Variances
+    THETA              1.000      0.000   2269.819      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ THETA    BY
+    I01                1.404      0.021     66.134      0.000
+    I02                1.404      0.021     66.134      0.000
+    I03                1.404      0.021     66.134      0.000
+    I04                1.404      0.021     66.134      0.000
+    I05                1.404      0.021     66.134      0.000
+    I06                1.404      0.021     66.134      0.000
+    I07                1.404      0.021     66.134      0.000
+    I08                1.404      0.021     66.134      0.000
+    I09                1.404      0.021     66.134      0.000
+    I10                1.404      0.021     66.134      0.000
+    I11                1.404      0.021     66.134      0.000
+    I12                1.404      0.021     66.134      0.000
+    I13                1.404      0.021     66.134      0.000
+
+ THETA      ON
+    U                  0.037      0.045      0.813      0.416
+
+ I10        ON
+    U                  2.489      0.060     41.314      0.000
+
+ I11        ON
+    U                  2.489      0.060     41.314      0.000
+
+ I12        ON
+    U                  2.489      0.060     41.314      0.000
+
+ I13        ON
+    U                  2.489      0.060     41.314      0.000
+
+ Intercepts
+    THETA              0.000      0.000    999.000    999.000
+
+ Thresholds
+    I01$1             -1.996      0.048    -41.622      0.000
+    I02$1             -1.757      0.046    -38.418      0.000
+    I03$1             -1.414      0.044    -32.326      0.000
+    I04$1             -1.130      0.043    -26.508      0.000
+    I05$1             -1.023      0.042    -24.219      0.000
+    I06$1             -0.582      0.041    -14.331      0.000
+    I07$1             -0.173      0.040     -4.309      0.000
+    I08$1             -0.037      0.040     -0.914      0.361
+    I09$1              0.481      0.040     11.905      0.000
+    I10$1              1.225      0.043     28.355      0.000
+    I11$1              1.987      0.047     41.976      0.000
+    I12$1              2.103      0.048     43.706      0.000
+    I13$1              2.240      0.049     45.262      0.000
+
+ Residual Variances
+    THETA              1.000      0.000   2269.819      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    I01                0.375      0.007     52.892      0.000
+    I02                0.375      0.007     52.892      0.000
+    I03                0.375      0.007     52.892      0.000
+    I04                0.375      0.007     52.892      0.000
+    I05                0.375      0.007     52.892      0.000
+    I06                0.375      0.007     52.892      0.000
+    I07                0.375      0.007     52.892      0.000
+    I08                0.375      0.007     52.892      0.000
+    I09                0.375      0.007     52.892      0.000
+    I10                0.462      0.007     62.399      0.000
+    I11                0.462      0.007     62.399      0.000
+    I12                0.462      0.007     62.399      0.000
+    I13                0.462      0.007     62.399      0.000
+
+     Latent                                         Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    THETA              0.000      0.000      0.407      0.684
+
+
+CONFIDENCE INTERVALS OF MODEL RESULTS
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ THETA    BY
+    I01              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    I02              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    I03              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    I04              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    I05              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    I06              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    I07              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    I08              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    I09              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    I10              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    I11              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    I12              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+    I13              1.000       1.000       1.000       1.000       1.000       1.000       1.000
+
+ THETA    ON
+    U               -0.112      -0.073      -0.053       0.052       0.156       0.176       0.215
+
+ I10      ON
+    U                2.334       2.371       2.390       2.489       2.588       2.607       2.644
+
+ I11      ON
+    U                2.334       2.371       2.390       2.489       2.588       2.607       2.644
+
+ I12      ON
+    U                2.334       2.371       2.390       2.489       2.588       2.607       2.644
+
+ I13      ON
+    U                2.334       2.371       2.390       2.489       2.588       2.607       2.644
+
+ Intercepts
+    THETA            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Thresholds
+    I01$1           -2.120      -2.090      -2.075      -1.996      -1.917      -1.902      -1.872
+    I02$1           -1.875      -1.847      -1.833      -1.757      -1.682      -1.668      -1.639
+    I03$1           -1.527      -1.500      -1.486      -1.414      -1.342      -1.328      -1.301
+    I04$1           -1.239      -1.213      -1.200      -1.130      -1.060      -1.046      -1.020
+    I05$1           -1.132      -1.106      -1.093      -1.023      -0.954      -0.941      -0.915
+    I06$1           -0.686      -0.661      -0.648      -0.582      -0.515      -0.502      -0.477
+    I07$1           -0.276      -0.252      -0.239      -0.173      -0.107      -0.094      -0.070
+    I08$1           -0.140      -0.116      -0.103      -0.037       0.029       0.042       0.067
+    I09$1            0.377       0.401       0.414       0.481       0.547       0.560       0.585
+    I10$1            1.114       1.140       1.154       1.225       1.296       1.310       1.336
+    I11$1            1.865       1.894       1.909       1.987       2.065       2.080       2.109
+    I12$1            1.979       2.008       2.023       2.103       2.182       2.197       2.226
+    I13$1            2.112       2.143       2.158       2.240       2.321       2.337       2.367
+
+ Residual Variances
+    THETA            1.818       1.855       1.874       1.972       2.070       2.089       2.126
+
+
+CONFIDENCE INTERVALS FOR THE LOGISTIC REGRESSION ODDS RATIO RESULTS
+
+ I10      ON
+    U               10.316      10.706      10.911      12.048      13.303      13.558      14.070
+
+ I11      ON
+    U               10.316      10.706      10.911      12.048      13.303      13.558      14.070
+
+ I12      ON
+    U               10.316      10.706      10.911      12.048      13.303      13.558      14.070
+
+ I13      ON
+    U               10.316      10.706      10.911      12.048      13.303      13.558      14.070
+
+
+CONFIDENCE INTERVALS OF STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ THETA    BY
+    I01              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I02              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I03              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I04              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I05              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I06              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I07              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I08              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I09              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I10              0.552       0.556       0.558       0.568       0.578       0.579       0.583
+    I11              0.552       0.556       0.558       0.568       0.578       0.579       0.583
+    I12              0.552       0.556       0.558       0.568       0.578       0.579       0.583
+    I13              0.552       0.556       0.558       0.568       0.578       0.579       0.583
+
+ THETA    ON
+    U               -0.029      -0.019      -0.014       0.013       0.040       0.046       0.056
+
+ I10      ON
+    U                0.344       0.350       0.353       0.367       0.381       0.384       0.389
+
+ I11      ON
+    U                0.344       0.350       0.353       0.367       0.381       0.384       0.389
+
+ I12      ON
+    U                0.344       0.350       0.353       0.367       0.381       0.384       0.389
+
+ I13      ON
+    U                0.344       0.350       0.353       0.367       0.381       0.384       0.389
+
+ Intercepts
+    THETA            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Thresholds
+    I01$1           -0.924      -0.911      -0.904      -0.870      -0.836      -0.829      -0.817
+    I02$1           -0.817      -0.805      -0.799      -0.766      -0.733      -0.727      -0.715
+    I03$1           -0.665      -0.654      -0.648      -0.616      -0.585      -0.579      -0.567
+    I04$1           -0.540      -0.529      -0.523      -0.492      -0.462      -0.456      -0.445
+    I05$1           -0.493      -0.482      -0.476      -0.446      -0.416      -0.410      -0.399
+    I06$1           -0.299      -0.288      -0.283      -0.254      -0.224      -0.219      -0.208
+    I07$1           -0.120      -0.110      -0.104      -0.075      -0.047      -0.041      -0.030
+    I08$1           -0.061      -0.050      -0.045      -0.016       0.013       0.018       0.029
+    I09$1            0.164       0.175       0.181       0.210       0.238       0.244       0.255
+    I10$1            0.451       0.462       0.467       0.495       0.523       0.529       0.539
+    I11$1            0.756       0.767       0.773       0.803       0.833       0.839       0.850
+    I12$1            0.802       0.813       0.819       0.850       0.881       0.887       0.898
+    I13$1            0.856       0.868       0.874       0.905       0.937       0.943       0.955
+
+ Residual Variances
+    THETA            0.999       0.999       0.999       1.000       1.001       1.001       1.001
+
+
+STDY Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ THETA    BY
+    I01              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I02              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I03              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I04              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I05              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I06              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I07              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I08              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I09              0.597       0.601       0.603       0.612       0.622       0.624       0.627
+    I10              0.552       0.556       0.558       0.568       0.578       0.579       0.583
+    I11              0.552       0.556       0.558       0.568       0.578       0.579       0.583
+    I12              0.552       0.556       0.558       0.568       0.578       0.579       0.583
+    I13              0.552       0.556       0.558       0.568       0.578       0.579       0.583
+
+ THETA    ON
+    U               -0.080      -0.052      -0.038       0.037       0.111       0.125       0.153
+
+ I10      ON
+    U                0.949       0.963       0.970       1.006       1.043       1.050       1.063
+
+ I11      ON
+    U                0.949       0.963       0.970       1.006       1.043       1.050       1.063
+
+ I12      ON
+    U                0.949       0.963       0.970       1.006       1.043       1.050       1.063
+
+ I13      ON
+    U                0.949       0.963       0.970       1.006       1.043       1.050       1.063
+
+ Intercepts
+    THETA            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Thresholds
+    I01$1           -0.924      -0.911      -0.904      -0.870      -0.836      -0.829      -0.817
+    I02$1           -0.817      -0.805      -0.799      -0.766      -0.733      -0.727      -0.715
+    I03$1           -0.665      -0.654      -0.648      -0.616      -0.585      -0.579      -0.567
+    I04$1           -0.540      -0.529      -0.523      -0.492      -0.462      -0.456      -0.445
+    I05$1           -0.493      -0.482      -0.476      -0.446      -0.416      -0.410      -0.399
+    I06$1           -0.299      -0.288      -0.283      -0.254      -0.224      -0.219      -0.208
+    I07$1           -0.120      -0.110      -0.104      -0.075      -0.047      -0.041      -0.030
+    I08$1           -0.061      -0.050      -0.045      -0.016       0.013       0.018       0.029
+    I09$1            0.164       0.175       0.181       0.210       0.238       0.244       0.255
+    I10$1            0.451       0.462       0.467       0.495       0.523       0.529       0.539
+    I11$1            0.756       0.767       0.773       0.803       0.833       0.839       0.850
+    I12$1            0.802       0.813       0.819       0.850       0.881       0.887       0.898
+    I13$1            0.856       0.868       0.874       0.905       0.937       0.943       0.955
+
+ Residual Variances
+    THETA            0.999       0.999       0.999       1.000       1.001       1.001       1.001
+
+
+STD Standardization
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ THETA    BY
+    I01              1.350       1.363       1.369       1.404       1.439       1.446       1.459
+    I02              1.350       1.363       1.369       1.404       1.439       1.446       1.459
+    I03              1.350       1.363       1.369       1.404       1.439       1.446       1.459
+    I04              1.350       1.363       1.369       1.404       1.439       1.446       1.459
+    I05              1.350       1.363       1.369       1.404       1.439       1.446       1.459
+    I06              1.350       1.363       1.369       1.404       1.439       1.446       1.459
+    I07              1.350       1.363       1.369       1.404       1.439       1.446       1.459
+    I08              1.350       1.363       1.369       1.404       1.439       1.446       1.459
+    I09              1.350       1.363       1.369       1.404       1.439       1.446       1.459
+    I10              1.350       1.363       1.369       1.404       1.439       1.446       1.459
+    I11              1.350       1.363       1.369       1.404       1.439       1.446       1.459
+    I12              1.350       1.363       1.369       1.404       1.439       1.446       1.459
+    I13              1.350       1.363       1.369       1.404       1.439       1.446       1.459
+
+ THETA    ON
+    U               -0.080      -0.052      -0.038       0.037       0.111       0.125       0.153
+
+ I10      ON
+    U                2.334       2.371       2.390       2.489       2.588       2.607       2.644
+
+ I11      ON
+    U                2.334       2.371       2.390       2.489       2.588       2.607       2.644
+
+ I12      ON
+    U                2.334       2.371       2.390       2.489       2.588       2.607       2.644
+
+ I13      ON
+    U                2.334       2.371       2.390       2.489       2.588       2.607       2.644
+
+ Intercepts
+    THETA            0.000       0.000       0.000       0.000       0.000       0.000       0.000
+
+ Thresholds
+    I01$1           -2.120      -2.090      -2.075      -1.996      -1.917      -1.902      -1.872
+    I02$1           -1.875      -1.847      -1.833      -1.757      -1.682      -1.668      -1.639
+    I03$1           -1.527      -1.500      -1.486      -1.414      -1.342      -1.328      -1.301
+    I04$1           -1.239      -1.213      -1.200      -1.130      -1.060      -1.046      -1.020
+    I05$1           -1.132      -1.106      -1.093      -1.023      -0.954      -0.941      -0.915
+    I06$1           -0.686      -0.661      -0.648      -0.582      -0.515      -0.502      -0.477
+    I07$1           -0.276      -0.252      -0.239      -0.173      -0.107      -0.094      -0.070
+    I08$1           -0.140      -0.116      -0.103      -0.037       0.029       0.042       0.067
+    I09$1            0.377       0.401       0.414       0.481       0.547       0.560       0.585
+    I10$1            1.114       1.140       1.154       1.225       1.296       1.310       1.336
+    I11$1            1.865       1.894       1.909       1.987       2.065       2.080       2.109
+    I12$1            1.979       2.008       2.023       2.103       2.182       2.197       2.226
+    I13$1            2.112       2.143       2.158       2.240       2.321       2.337       2.367
+
+ Residual Variances
+    THETA            0.999       0.999       0.999       1.000       1.001       1.001       1.001
+
+
+RESIDUAL OUTPUT
+
+
+     RESIDUAL OUTPUT IS NOT AVAILABLE FOR THIS MODEL.  ADDITIONAL OUTPUT FOR
+     CATEGORICAL, COUNT, AND NOMINAL VARIABLES MAY BE AVAILABLE USING TECH10.
+
+
+TECHNICAL 10 OUTPUT
+
+
+     UNIVARIATE DISTRIBUTION FIT
+
+     Variable          Observed      Estimated      Residual (Obs.-Est.)    Stand. Residual
+     I01
+       Category 1        0.183          0.183                  0.000               -0.029
+       Category 2        0.817          0.817                  0.000                0.029
+     I02
+       Category 1        0.212          0.212                  0.000               -0.020
+       Category 2        0.788          0.788                  0.000                0.020
+     I03
+       Category 1        0.259          0.259                  0.000               -0.007
+       Category 2        0.741          0.741                  0.000                0.007
+     I04
+       Category 1        0.302          0.302                  0.000                0.007
+       Category 2        0.698          0.698                  0.000               -0.007
+     I05
+       Category 1        0.319          0.319                  0.000                0.012
+       Category 2        0.681          0.681                  0.000               -0.012
+     I06
+       Category 1        0.394          0.394                  0.000                0.032
+       Category 2        0.606          0.606                  0.000               -0.032
+     I07
+       Category 1        0.467          0.467                  0.000                0.050
+       Category 2        0.533          0.533                  0.000               -0.050
+     I08
+       Category 1        0.492          0.492                  0.000                0.054
+       Category 2        0.508          0.508                  0.000               -0.054
+     I09
+       Category 1        0.586          0.585                  0.000                0.065
+       Category 2        0.414          0.415                  0.000               -0.065
+     I10
+       Category 1        0.642          0.642                  0.000                0.000
+       Category 2        0.358          0.358                  0.000                0.000
+     I11
+       Category 1        0.750          0.750                  0.000                0.004
+       Category 2        0.250          0.250                  0.000               -0.004
+     I12
+       Category 1        0.764          0.764                  0.000                0.003
+       Category 2        0.236          0.236                  0.000               -0.003
+     I13
+       Category 1        0.781          0.781                  0.000                0.005
+       Category 2        0.219          0.219                  0.000               -0.005
+
+
+     BIVARIATE DISTRIBUTIONS FIT
+
+     Variable       Variable          Observed     Estimated    Residual (Obs.-Est.)  Stand. Residual
+     I01            I02
+       Category 1     Category 1        0.070       0.074            -0.004           -0.995
+       Category 1     Category 2        0.112       0.109             0.004            0.799
+       Category 2     Category 1        0.142       0.138             0.004            0.731
+       Category 2     Category 2        0.676       0.679            -0.003           -0.516
+     I01            I03
+       Category 1     Category 1        0.084       0.086            -0.001           -0.377
+       Category 1     Category 2        0.098       0.097             0.001            0.319
+       Category 2     Category 1        0.175       0.173             0.001            0.271
+       Category 2     Category 2        0.643       0.644            -0.001           -0.191
+     I01            I04
+       Category 1     Category 1        0.092       0.096            -0.004           -0.906
+       Category 1     Category 2        0.090       0.087             0.004            0.908
+       Category 2     Category 1        0.210       0.206             0.004            0.667
+       Category 2     Category 2        0.607       0.611            -0.004           -0.531
+     I01            I05
+       Category 1     Category 1        0.101       0.100             0.001            0.206
+       Category 1     Category 2        0.082       0.083            -0.001           -0.264
+       Category 2     Category 1        0.219       0.220            -0.001           -0.136
+       Category 2     Category 2        0.599       0.598             0.001            0.138
+     I01            I06
+       Category 1     Category 1        0.112       0.115            -0.003           -0.651
+       Category 1     Category 2        0.071       0.068             0.003            0.781
+       Category 2     Category 1        0.282       0.279             0.003            0.498
+       Category 2     Category 2        0.535       0.538            -0.003           -0.425
+     I01            I07
+       Category 1     Category 1        0.123       0.128            -0.005           -0.971
+       Category 1     Category 2        0.059       0.055             0.004            1.376
+       Category 2     Category 1        0.344       0.339             0.005            0.738
+       Category 2     Category 2        0.473       0.478            -0.005           -0.677
+     I01            I08
+       Category 1     Category 1        0.134       0.132             0.002            0.451
+       Category 1     Category 2        0.048       0.051            -0.002           -0.747
+       Category 2     Category 1        0.358       0.360            -0.002           -0.261
+       Category 2     Category 2        0.459       0.457             0.002            0.274
+     I01            I09
+       Category 1     Category 1        0.147       0.146             0.001            0.195
+       Category 1     Category 2        0.036       0.037            -0.001           -0.424
+       Category 2     Category 1        0.439       0.440            -0.001           -0.074
+       Category 2     Category 2        0.378       0.378             0.001            0.099
+     I01            I10
+       Category 1     Category 1        0.147       0.150            -0.003           -0.607
+       Category 1     Category 2        0.036       0.033             0.003            1.156
+       Category 2     Category 1        0.495       0.492             0.003            0.434
+       Category 2     Category 2        0.322       0.325            -0.003           -0.439
+     I01            I11
+       Category 1     Category 1        0.162       0.162             0.000           -0.018
+       Category 1     Category 2        0.020       0.020             0.000           -0.031
+       Category 2     Category 1        0.587       0.587             0.000            0.017
+       Category 2     Category 2        0.230       0.230             0.000            0.006
+     I01            I12
+       Category 1     Category 1        0.165       0.164             0.001            0.266
+       Category 1     Category 2        0.017       0.019            -0.002           -0.809
+       Category 2     Category 1        0.599       0.600            -0.001           -0.198
+       Category 2     Category 2        0.219       0.217             0.002            0.263
+     I01            I13
+       Category 1     Category 1        0.166       0.166             0.000            0.023
+       Category 1     Category 2        0.017       0.017             0.000           -0.152
+       Category 2     Category 1        0.615       0.615             0.000           -0.013
+       Category 2     Category 2        0.203       0.202             0.000            0.044
+     I02            I03
+       Category 1     Category 1        0.097       0.097             0.000            0.038
+       Category 1     Category 2        0.115       0.115             0.000           -0.061
+       Category 2     Category 1        0.162       0.162             0.000           -0.039
+       Category 2     Category 2        0.626       0.626             0.000            0.046
+     I02            I04
+       Category 1     Category 1        0.109       0.109             0.000            0.101
+       Category 1     Category 2        0.103       0.103            -0.001           -0.130
+       Category 2     Category 1        0.193       0.194             0.000           -0.072
+       Category 2     Category 2        0.595       0.594             0.001            0.074
+     I02            I05
+       Category 1     Category 1        0.112       0.113            -0.002           -0.342
+       Category 1     Category 2        0.100       0.099             0.001            0.335
+       Category 2     Category 1        0.208       0.206             0.002            0.281
+       Category 2     Category 2        0.580       0.582            -0.001           -0.214
+     I02            I06
+       Category 1     Category 1        0.128       0.131            -0.003           -0.659
+       Category 1     Category 2        0.084       0.081             0.003            0.785
+       Category 2     Category 1        0.266       0.263             0.003            0.541
+       Category 2     Category 2        0.522       0.525            -0.003           -0.461
+     I02            I07
+       Category 1     Category 1        0.147       0.146             0.000            0.052
+       Category 1     Category 2        0.065       0.066             0.000           -0.107
+       Category 2     Category 1        0.321       0.321             0.000            0.014
+       Category 2     Category 2        0.467       0.467             0.000            0.003
+     I02            I08
+       Category 1     Category 1        0.155       0.151             0.004            0.762
+       Category 1     Category 2        0.057       0.061            -0.004           -1.174
+       Category 2     Category 1        0.337       0.341            -0.003           -0.518
+       Category 2     Category 2        0.451       0.447             0.004            0.510
+     I02            I09
+       Category 1     Category 1        0.169       0.168             0.001            0.238
+       Category 1     Category 2        0.043       0.045            -0.001           -0.470
+       Category 2     Category 1        0.417       0.418            -0.001           -0.115
+       Category 2     Category 2        0.371       0.370             0.001            0.135
+     I02            I10
+       Category 1     Category 1        0.175       0.173             0.003            0.489
+       Category 1     Category 2        0.037       0.039            -0.003           -0.992
+       Category 2     Category 1        0.467       0.470            -0.003           -0.370
+       Category 2     Category 2        0.321       0.318             0.003            0.414
+     I02            I11
+       Category 1     Category 1        0.190       0.188             0.002            0.354
+       Category 1     Category 2        0.022       0.024            -0.002           -0.947
+       Category 2     Category 1        0.560       0.562            -0.002           -0.275
+       Category 2     Category 2        0.228       0.226             0.002            0.346
+     I02            I12
+       Category 1     Category 1        0.191       0.189             0.002            0.279
+       Category 1     Category 2        0.021       0.023            -0.002           -0.788
+       Category 2     Category 1        0.573       0.575            -0.002           -0.218
+       Category 2     Category 2        0.215       0.213             0.002            0.283
+     I02            I13
+       Category 1     Category 1        0.191       0.191             0.000           -0.048
+       Category 1     Category 2        0.021       0.021             0.000            0.075
+       Category 2     Category 1        0.589       0.589             0.000            0.042
+       Category 2     Category 2        0.199       0.199             0.000           -0.031
+     I03            I04
+       Category 1     Category 1        0.130       0.128             0.002            0.393
+       Category 1     Category 2        0.129       0.131            -0.002           -0.398
+       Category 2     Category 1        0.172       0.174            -0.002           -0.338
+       Category 2     Category 2        0.568       0.567             0.002            0.265
+     I03            I05
+       Category 1     Category 1        0.135       0.134             0.002            0.393
+       Category 1     Category 2        0.124       0.126            -0.002           -0.412
+       Category 2     Category 1        0.184       0.186            -0.002           -0.329
+       Category 2     Category 2        0.557       0.555             0.002            0.264
+     I03            I06
+       Category 1     Category 1        0.155       0.156            -0.001           -0.101
+       Category 1     Category 2        0.104       0.104             0.000            0.111
+       Category 2     Category 1        0.239       0.238             0.001            0.123
+       Category 2     Category 2        0.502       0.502            -0.001           -0.099
+     I03            I07
+       Category 1     Category 1        0.176       0.175             0.001            0.235
+       Category 1     Category 2        0.083       0.085            -0.001           -0.331
+       Category 2     Category 1        0.291       0.292            -0.001           -0.141
+       Category 2     Category 2        0.449       0.448             0.001            0.135
+     I03            I08
+       Category 1     Category 1        0.178       0.181            -0.003           -0.583
+       Category 1     Category 2        0.082       0.078             0.003            0.823
+       Category 2     Category 1        0.315       0.311             0.004            0.543
+       Category 2     Category 2        0.426       0.430            -0.004           -0.502
+     I03            I09
+       Category 1     Category 1        0.207       0.202             0.005            0.965
+       Category 1     Category 2        0.052       0.058            -0.006           -1.672
+       Category 2     Category 1        0.379       0.384            -0.005           -0.730
+       Category 2     Category 2        0.362       0.357             0.005            0.747
+     I03            I10
+       Category 1     Category 1        0.206       0.209            -0.002           -0.411
+       Category 1     Category 2        0.053       0.051             0.002            0.748
+       Category 2     Category 1        0.436       0.434             0.002            0.337
+       Category 2     Category 2        0.305       0.307            -0.002           -0.356
+     I03            I11
+       Category 1     Category 1        0.226       0.228            -0.002           -0.323
+       Category 1     Category 2        0.034       0.032             0.002            0.756
+       Category 2     Category 1        0.524       0.522             0.002            0.275
+       Category 2     Category 2        0.217       0.218            -0.002           -0.325
+     I03            I12
+       Category 1     Category 1        0.228       0.230            -0.002           -0.342
+       Category 1     Category 2        0.031       0.029             0.002            0.835
+       Category 2     Category 1        0.536       0.534             0.002            0.292
+       Category 2     Category 2        0.204       0.206            -0.002           -0.352
+     I03            I13
+       Category 1     Category 1        0.233       0.232             0.001            0.098
+       Category 1     Category 2        0.026       0.027            -0.001           -0.273
+       Category 2     Category 1        0.548       0.548            -0.001           -0.079
+       Category 2     Category 2        0.193       0.193             0.001            0.107
+     I04            I05
+       Category 1     Category 1        0.147       0.151            -0.004           -0.873
+       Category 1     Category 2        0.156       0.151             0.004            0.881
+       Category 2     Category 1        0.173       0.168             0.004            0.850
+       Category 2     Category 2        0.525       0.529            -0.005           -0.643
+     I04            I06
+       Category 1     Category 1        0.174       0.177            -0.003           -0.604
+       Category 1     Category 2        0.129       0.126             0.003            0.704
+       Category 2     Category 1        0.221       0.217             0.003            0.597
+       Category 2     Category 2        0.477       0.481            -0.004           -0.498
+     I04            I07
+       Category 1     Category 1        0.203       0.200             0.003            0.598
+       Category 1     Category 2        0.099       0.103            -0.003           -0.777
+       Category 2     Category 1        0.264       0.267            -0.003           -0.483
+       Category 2     Category 2        0.433       0.430             0.003            0.426
+     I04            I08
+       Category 1     Category 1        0.201       0.207            -0.006           -1.084
+       Category 1     Category 2        0.102       0.096             0.006            1.504
+       Category 2     Category 1        0.292       0.285             0.007            1.033
+       Category 2     Category 2        0.406       0.413            -0.007           -0.953
+     I04            I09
+       Category 1     Category 1        0.230       0.232            -0.001           -0.249
+       Category 1     Category 2        0.072       0.071             0.002            0.422
+       Category 2     Category 1        0.356       0.354             0.002            0.287
+       Category 2     Category 2        0.342       0.344            -0.002           -0.295
+     I04            I10
+       Category 1     Category 1        0.244       0.241             0.003            0.505
+       Category 1     Category 2        0.059       0.062            -0.003           -0.884
+       Category 2     Category 1        0.399       0.402            -0.003           -0.440
+       Category 2     Category 2        0.299       0.296             0.003            0.466
+     I04            I11
+       Category 1     Category 1        0.262       0.263            -0.002           -0.265
+       Category 1     Category 2        0.041       0.039             0.002            0.620
+       Category 2     Category 1        0.488       0.486             0.002            0.237
+       Category 2     Category 2        0.210       0.211            -0.002           -0.298
+     I04            I12
+       Category 1     Category 1        0.271       0.266             0.004            0.692
+       Category 1     Category 2        0.032       0.036            -0.004           -1.625
+       Category 2     Category 1        0.494       0.498            -0.004           -0.609
+       Category 2     Category 2        0.204       0.200             0.004            0.754
+     I04            I13
+       Category 1     Category 1        0.270       0.269             0.000            0.063
+       Category 1     Category 2        0.033       0.033             0.000           -0.139
+       Category 2     Category 1        0.511       0.511             0.000           -0.052
+       Category 2     Category 2        0.187       0.186             0.000            0.059
+     I05            I06
+       Category 1     Category 1        0.184       0.185            -0.001           -0.249
+       Category 1     Category 2        0.136       0.134             0.001            0.299
+       Category 2     Category 1        0.211       0.209             0.002            0.276
+       Category 2     Category 2        0.470       0.472            -0.002           -0.236
+     I05            I07
+       Category 1     Category 1        0.212       0.209             0.003            0.464
+       Category 1     Category 2        0.108       0.110            -0.003           -0.585
+       Category 2     Category 1        0.256       0.258            -0.002           -0.374
+       Category 2     Category 2        0.425       0.423             0.002            0.320
+     I05            I08
+       Category 1     Category 1        0.217       0.217             0.001            0.106
+       Category 1     Category 2        0.102       0.103            -0.001           -0.126
+       Category 2     Category 1        0.275       0.275             0.000           -0.037
+       Category 2     Category 2        0.406       0.406             0.000            0.023
+     I05            I09
+       Category 1     Category 1        0.243       0.243            -0.001           -0.118
+       Category 1     Category 2        0.077       0.076             0.001            0.211
+       Category 2     Category 1        0.343       0.342             0.001            0.174
+       Category 2     Category 2        0.337       0.339            -0.001           -0.186
+     I05            I10
+       Category 1     Category 1        0.254       0.253             0.001            0.172
+       Category 1     Category 2        0.065       0.066            -0.001           -0.279
+       Category 2     Category 1        0.388       0.389            -0.001           -0.154
+       Category 2     Category 2        0.292       0.291             0.001            0.153
+     I05            I11
+       Category 1     Category 1        0.274       0.277            -0.004           -0.577
+       Category 1     Category 2        0.046       0.042             0.004            1.317
+       Category 2     Category 1        0.476       0.472             0.004            0.521
+       Category 2     Category 2        0.205       0.208            -0.004           -0.654
+     I05            I12
+       Category 1     Category 1        0.278       0.280            -0.003           -0.421
+       Category 1     Category 2        0.042       0.039             0.003            1.007
+       Category 2     Category 1        0.486       0.484             0.003            0.381
+       Category 2     Category 2        0.194       0.197            -0.003           -0.493
+     I05            I13
+       Category 1     Category 1        0.283       0.284            -0.001           -0.131
+       Category 1     Category 2        0.036       0.035             0.001            0.349
+       Category 2     Category 1        0.498       0.497             0.001            0.122
+       Category 2     Category 2        0.183       0.184            -0.001           -0.172
+     I06            I07
+       Category 1     Category 1        0.253       0.249             0.003            0.560
+       Category 1     Category 2        0.142       0.145            -0.003           -0.644
+       Category 2     Category 1        0.215       0.218            -0.003           -0.526
+       Category 2     Category 2        0.391       0.388             0.003            0.414
+     I06            I08
+       Category 1     Category 1        0.260       0.259             0.002            0.247
+       Category 1     Category 2        0.134       0.135            -0.001           -0.270
+       Category 2     Category 1        0.232       0.233            -0.001           -0.191
+       Category 2     Category 2        0.374       0.373             0.001            0.135
+     I06            I09
+       Category 1     Category 1        0.294       0.293             0.001            0.207
+       Category 1     Category 2        0.100       0.101            -0.001           -0.261
+       Category 2     Category 1        0.292       0.292            -0.001           -0.137
+       Category 2     Category 2        0.314       0.314             0.001            0.101
+     I06            I10
+       Category 1     Category 1        0.305       0.306            -0.001           -0.180
+       Category 1     Category 2        0.089       0.088             0.001            0.349
+       Category 2     Category 1        0.337       0.336             0.001            0.176
+       Category 2     Category 2        0.268       0.270            -0.001           -0.222
+     I06            I11
+       Category 1     Category 1        0.333       0.338            -0.005           -0.790
+       Category 1     Category 2        0.061       0.056             0.006            1.696
+       Category 2     Category 1        0.417       0.412             0.005            0.763
+       Category 2     Category 2        0.189       0.194            -0.006           -0.989
+     I06            I12
+       Category 1     Category 1        0.340       0.342            -0.002           -0.246
+       Category 1     Category 2        0.054       0.052             0.002            0.596
+       Category 2     Category 1        0.424       0.422             0.002            0.239
+       Category 2     Category 2        0.182       0.184            -0.002           -0.345
+     I06            I13
+       Category 1     Category 1        0.342       0.346            -0.005           -0.694
+       Category 1     Category 2        0.052       0.048             0.005            1.626
+       Category 2     Category 1        0.439       0.434             0.005            0.670
+       Category 2     Category 2        0.167       0.172            -0.005           -0.922
+     I07            I08
+       Category 1     Category 1        0.295       0.297            -0.002           -0.387
+       Category 1     Category 2        0.173       0.170             0.003            0.537
+       Category 2     Category 1        0.197       0.195             0.003            0.515
+       Category 2     Category 2        0.335       0.338            -0.003           -0.484
+     I07            I09
+       Category 1     Category 1        0.343       0.339             0.004            0.656
+       Category 1     Category 2        0.124       0.128            -0.004           -0.854
+       Category 2     Category 1        0.243       0.247            -0.004           -0.646
+       Category 2     Category 2        0.290       0.286             0.004            0.561
+     I07            I10
+       Category 1     Category 1        0.359       0.356             0.003            0.443
+       Category 1     Category 2        0.108       0.111            -0.003           -0.596
+       Category 2     Category 1        0.283       0.286            -0.003           -0.469
+       Category 2     Category 2        0.249       0.247             0.003            0.434
+     I07            I11
+       Category 1     Category 1        0.394       0.396            -0.001           -0.211
+       Category 1     Category 2        0.073       0.071             0.002            0.498
+       Category 2     Category 1        0.355       0.354             0.001            0.219
+       Category 2     Category 2        0.177       0.179            -0.002           -0.338
+     I07            I12
+       Category 1     Category 1        0.401       0.401             0.000            0.055
+       Category 1     Category 2        0.066       0.066             0.000           -0.008
+       Category 2     Category 1        0.363       0.363             0.000           -0.053
+       Category 2     Category 2        0.170       0.170             0.000            0.002
+     I07            I13
+       Category 1     Category 1        0.406       0.406             0.000            0.006
+       Category 1     Category 2        0.061       0.061             0.000            0.092
+       Category 2     Category 1        0.374       0.374             0.000           -0.002
+       Category 2     Category 2        0.158       0.159             0.000           -0.066
+     I08            I09
+       Category 1     Category 1        0.354       0.354             0.001            0.088
+       Category 1     Category 2        0.138       0.138             0.000           -0.043
+       Category 2     Category 1        0.231       0.232             0.000           -0.024
+       Category 2     Category 2        0.276       0.277             0.000           -0.038
+     I08            I10
+       Category 1     Category 1        0.373       0.373             0.000            0.046
+       Category 1     Category 2        0.119       0.119             0.000            0.015
+       Category 2     Category 1        0.269       0.270             0.000           -0.051
+       Category 2     Category 2        0.238       0.238             0.000           -0.011
+     I08            I11
+       Category 1     Category 1        0.411       0.415            -0.004           -0.527
+       Category 1     Category 2        0.081       0.077             0.004            1.077
+       Category 2     Category 1        0.338       0.335             0.004            0.554
+       Category 2     Category 2        0.169       0.173            -0.004           -0.762
+     I08            I12
+       Category 1     Category 1        0.421       0.420             0.001            0.088
+       Category 1     Category 2        0.071       0.071             0.000           -0.063
+       Category 2     Category 1        0.343       0.344            -0.001           -0.088
+       Category 2     Category 2        0.165       0.164             0.000            0.040
+     I08            I13
+       Category 1     Category 1        0.425       0.426            -0.002           -0.247
+       Category 1     Category 2        0.068       0.065             0.002            0.604
+       Category 2     Category 1        0.356       0.354             0.002            0.259
+       Category 2     Category 2        0.152       0.154            -0.002           -0.419
+     I09            I10
+       Category 1     Category 1        0.435       0.433             0.002            0.335
+       Category 1     Category 2        0.151       0.153            -0.002           -0.373
+       Category 2     Category 1        0.207       0.210            -0.002           -0.408
+       Category 2     Category 2        0.207       0.205             0.002            0.332
+     I09            I11
+       Category 1     Category 1        0.486       0.486             0.000            0.053
+       Category 1     Category 2        0.100       0.100             0.000            0.019
+       Category 2     Category 1        0.264       0.264             0.000           -0.056
+       Category 2     Category 2        0.151       0.151             0.000           -0.021
+     I09            I12
+       Category 1     Category 1        0.494       0.493             0.001            0.147
+       Category 1     Category 2        0.092       0.093            -0.001           -0.143
+       Category 2     Category 1        0.271       0.272            -0.001           -0.162
+       Category 2     Category 2        0.144       0.143             0.001            0.114
+     I09            I13
+       Category 1     Category 1        0.500       0.500             0.000            0.042
+       Category 1     Category 2        0.085       0.085             0.000            0.040
+       Category 2     Category 1        0.280       0.280             0.000           -0.042
+       Category 2     Category 2        0.134       0.134             0.000           -0.038
+     I10            I11
+       Category 1     Category 1        0.547       0.548            -0.002           -0.232
+       Category 1     Category 2        0.096       0.094             0.002            0.395
+       Category 2     Category 1        0.203       0.201             0.002            0.292
+       Category 2     Category 2        0.155       0.156            -0.002           -0.322
+     I10            I12
+       Category 1     Category 1        0.558       0.556             0.003            0.381
+       Category 1     Category 2        0.084       0.087            -0.003           -0.673
+       Category 2     Category 1        0.206       0.208            -0.003           -0.462
+       Category 2     Category 2        0.152       0.149             0.003            0.527
+     I10            I13
+       Category 1     Category 1        0.565       0.564             0.001            0.141
+       Category 1     Category 2        0.078       0.079            -0.001           -0.261
+       Category 2     Category 1        0.216       0.217            -0.001           -0.166
+       Category 2     Category 2        0.142       0.141             0.001            0.197
+     I11            I12
+       Category 1     Category 1        0.633       0.632             0.001            0.099
+       Category 1     Category 2        0.117       0.118            -0.001           -0.143
+       Category 2     Category 1        0.131       0.132            -0.001           -0.137
+       Category 2     Category 2        0.119       0.118             0.001            0.139
+     I11            I13
+       Category 1     Category 1        0.645       0.643             0.003            0.421
+       Category 1     Category 2        0.104       0.107            -0.003           -0.647
+       Category 2     Category 1        0.135       0.138            -0.003           -0.580
+       Category 2     Category 2        0.115       0.112             0.003            0.628
+     I12            I13
+       Category 1     Category 1        0.651       0.653            -0.001           -0.165
+       Category 1     Category 2        0.113       0.112             0.001            0.255
+       Category 2     Category 1        0.129       0.128             0.001            0.241
+       Category 2     Category 2        0.107       0.108            -0.001           -0.265
+
+
+     Beginning Time:  18:55:51
+        Ending Time:  18:55:53
+       Elapsed Time:  00:00:02
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2023 Muthen & Muthen

@@ -1,0 +1,61 @@
+DATA:
+FILE = "rasch_bias_lltm_n5k.dat";
+ 
+VARIABLE:
+NAMES = u id_i resp i01 i02 i03 i04 i05 i06 i07 i08 i09 i10 i11 i12 i13 i10_dif
+     i11_dif i12_dif i13_dif; 
+ MISSING=.;
+ 
+      
+USEVARIABLES =  resp u i01-i13_dif;
+
+CATEGORICAL = resp;
+
+WITHIN = i01-i13_dif;
+
+BETWEEN = u;
+
+CLUSTER = id_i;
+
+
+
+ANALYSIS:
+
+TYPE = TWOLEVEL;
+LINK = LOGIT;
+
+
+MODEL:
+
+
+%WITHIN%
+
+!these are the model thresholds
+resp ON i01-i13;
+! these are the fixed DIF effects
+
+resp ON i10_dif (bias);
+resp ON i11_dif (bias);
+resp ON i12_dif (bias);
+resp ON i13_dif (bias);
+
+%BETWEEN%
+!latent mean center to cero
+[resp$1@0];
+
+!this is the main effect
+resp on u;
+
+
+OUTPUT:
+
+STAND
+CINTERVAL
+RESIDUAL
+;
+
+SAVEDATA:
+
+FILE = rasch_bias_lltm_n5k_eta.dat;  
+SAVE = FSCORES;
+

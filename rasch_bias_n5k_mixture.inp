@@ -1,0 +1,163 @@
+TITLE:
+rasch mimic;
+
+DATA:
+FILE = rasch_bias_n5000.dat;
+
+VARIABLE:
+NAMES =
+i01
+i02
+i03
+i04
+i05
+i06
+i07
+i08
+i09
+i10
+i11
+i12
+i13
+u
+;
+
+MISSING=.;
+
+CATEGORICAL  = 
+i01
+i02
+i03
+i04
+i05
+i06
+i07
+i08
+i09
+i10
+i11
+i12
+i13
+;
+
+CLASSES = c(2);
+
+KNOWNCLASS = c(u = 
+1     !monday
+0     !friday
+);
+
+ANALYSIS:
+TYPE = MIXTURE;
+ESTIMATOR = MLR;
+ALGORITHM = INTEGRATION;
+
+MODEL:
+%OVERALL%
+!measurement model
+theta by i01@1;
+theta by i02@1;
+theta by i03@1;
+theta by i04@1;
+theta by i05@1;
+theta by i06@1;
+theta by i07@1;
+theta by i08@1;
+theta by i09@1;
+theta by i10@1;
+theta by i11@1;
+theta by i12@1;
+theta by i13@1;
+
+
+%c#1%
+!measurement model
+theta by i01@1;
+theta by i02@1;
+theta by i03@1;
+theta by i04@1;
+theta by i05@1;
+theta by i06@1;
+theta by i07@1;
+theta by i08@1;
+theta by i09@1;
+theta by i10@1;
+theta by i11@1;
+theta by i12@1;
+theta by i13@1;
+
+!latent mean
+[theta@0];
+
+!variance;
+theta(psi);
+
+
+!delta
+[i01$1](d01);
+[i02$1](d02);
+[i03$1](d03);
+[i04$1](d04);
+[i05$1](d05);
+[i06$1](d06);
+[i07$1](d07);
+[i08$1](d08);
+[i09$1](d09);
+[i10$1](c10);
+[i11$1](c11);
+[i12$1](c12);
+[i13$1](c13);
+
+
+
+%c#2% ! friday
+!measurement model
+theta by i01@1;
+theta by i02@1;
+theta by i03@1;
+theta by i04@1;
+theta by i05@1;
+theta by i06@1;
+theta by i07@1;
+theta by i08@1;
+theta by i09@1;
+theta by i10@1;
+theta by i11@1;
+theta by i12@1;
+theta by i13@1;
+
+!latent mean
+[theta@0];
+
+!variance;
+theta(psi);
+
+!delta
+[i01$1](d01);
+[i02$1](d02);
+[i03$1](d03);
+[i04$1](d04);
+[i05$1](d05);
+[i06$1](d06);
+[i07$1](d07);
+[i08$1](d08);
+[i09$1](d09);
+[i10$1](d10);
+[i11$1](d11);
+[i12$1](d12);
+[i13$1](d13);
+
+
+
+MODEL CONSTRAINT:
+new(bias);
+c10 = d10 + bias;
+c11 = d11 + bias;
+c12 = d12 + bias;
+c13 = d13 + bias;
+
+OUTPUT:
+STANDARDIZED
+CINTERVAL
+RESIDUAL
+TECH10;

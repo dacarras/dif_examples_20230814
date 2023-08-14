@@ -1,0 +1,80 @@
+TITLE:
+rasch mimic;
+
+DATA:
+FILE = rasch_bias_n5000.dat;
+
+VARIABLE:
+NAMES =
+i01
+i02
+i03
+i04
+i05
+i06
+i07
+i08
+i09
+i10
+i11
+i12
+i13
+u
+;
+
+MISSING=.;
+
+CATEGORICAL  = 
+i01
+i02
+i03
+i04
+i05
+i06
+i07
+i08
+i09
+i10
+i11
+i12
+i13
+;
+
+ANALYSIS:
+TYPE = GENERAL;
+ESTIMATOR = MLR;
+
+MODEL:
+
+!measurement model
+theta by i01@1;
+theta by i02@1;
+theta by i03@1;
+theta by i04@1;
+theta by i05@1;
+theta by i06@1;
+theta by i07@1;
+theta by i08@1;
+theta by i09@1;
+theta by i10@1;
+theta by i11@1;
+theta by i12@1;
+theta by i13@1;
+
+!means
+[theta@0];
+
+!latent regression
+theta on u;
+
+!effect on thresholds
+i10 on u (bias);
+i11 on u (bias);
+i12 on u (bias);
+i13 on u (bias);
+
+OUTPUT:
+STANDARDIZED
+CINTERVAL
+RESIDUAL
+TECH10;
