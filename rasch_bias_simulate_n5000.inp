@@ -1,0 +1,112 @@
+TITLE:
+rasch mimic;
+montecarlo:
+	NAMES = i01-i13 u;
+	GENERATE = i01-i13(1);
+    CUTPOINTS = u(1);
+	CATEGORICAL = i01-i13;
+	nobservations = 5000;
+	seed = 58459;
+	nreps = 1;
+	save = rasch_bias_n5000.dat;
+
+ANALYSIS:	
+	TYPE = GENERAL;
+	ESTIMATOR = MLR;
+
+MODEL POPULATION:
+
+!covariates
+[u@0];
+u@1;
+
+!measurement model
+theta by i01@1;
+theta by i02@1;
+theta by i03@1;
+theta by i04@1;
+theta by i05@1;
+theta by i06@1;
+theta by i07@1;
+theta by i08@1;
+theta by i09@1;
+theta by i10@1;
+theta by i11@1;
+theta by i12@1;
+theta by i13@1;
+
+!means
+[theta@0];
+
+!variance;
+theta@2;
+
+!latent regression
+theta on u@0;
+
+!effect on thresholds (no diff)
+i01 on u@0;
+i02 on u@0;
+i03 on u@0;
+i04 on u@0;
+i05 on u@0;
+i06 on u@0;
+i07 on u@0;
+i08 on u@0;
+i09 on u@0;
+
+
+!effect on thresholds (some dif)
+i10 on u@2.5;
+i11 on u@2.5;
+i12 on u@2.5;
+i13 on u@2.5;
+
+
+!delta
+[i01$1*-2.00];
+[i02$1*-1.80];
+[i03$1*-1.40];
+[i04$1*-1.20];
+[i05$1*-1.00];
+[i06$1*-0.60];
+[i07$1*-0.20];
+[i08$1*0.00];
+[i09$1*0.50];
+[i10$1*1.20];
+[i11$1*2.00];
+[i12$1*2.10];
+[i13$1*2.20];
+
+MODEL:
+	
+
+!measurement model
+theta by i01@1;
+theta by i02@1;
+theta by i03@1;
+theta by i04@1;
+theta by i05@1;
+theta by i06@1;
+theta by i07@1;
+theta by i08@1;
+theta by i09@1;
+theta by i10@1;
+theta by i11@1;
+theta by i12@1;
+theta by i13@1;
+
+!means
+[theta@0];
+
+!variance;
+theta@1;
+
+!latent regression
+theta on u;
+
+
+output:
+tech8
+tech9
+;
